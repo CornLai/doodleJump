@@ -9,7 +9,7 @@ class ScoreBoard : public QWidget {
   Q_OBJECT
  public:
   ScoreBoard(QWidget *parent = nullptr);
-  void culScore(long long);
+  void culScore(long long score);
  private slots:
 
   void culHP();

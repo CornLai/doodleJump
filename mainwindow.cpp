@@ -1,38 +1,20 @@
 #include "./headfile/mainwindow.h"
-#include "./headfile/gamewidget.h"
-#include "./headfile/gamemenu.h"
 
+#include "./headfile/gamemenu.h"
+#include "./headfile/gamewidget.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-   setFixedSize(550, 960);  // 初始化主畫面
-
-  // 創建 QStackedWidget
-  QStackedWidget *stackedWidget = new QStackedWidget(this);
-
-  // 創建遊戲進行選單和進入遊戲選單
-  // GameWidget *gamewidget = new GameWidget(stackedWidget, this);
-  GameMenu *menu = new GameMenu(stackedWidget, this);
+  setWindowTitle("Doodle Jump");
+  setFixedSize(600, 960);  // 初始化主畫面
+  QStackedWidget *stackedWidget =
+      new QStackedWidget(this);  // 創建 QStackedWidget
+  GameMenu *menu =
+      new GameMenu(stackedWidget, this);  // 創建遊戲進行選單和進入遊戲選單
 
   // 將頁面添加到 QStackedWidget
-  stackedWidget->addWidget(menu);        // index 0
-  // stackedWidget->addWidget(gamewidget);  // index 1
-
-  // // 將 QStackedWidget 添加到主窗口的佈局中
-  // QVBoxLayout *mainLayout = new QVBoxLayout;
-  // mainLayout->addWidget(stackedWidget);
-  // 設置主窗口的中央佈局
-  // QWidget *centralWidget = new QWidget(this);
-  // centralWidget->setLayout(mainLayout);
+  stackedWidget->addWidget(menu);  // 將頁面添加到 QStackedWidget// index 0
   setCentralWidget(stackedWidget);
   setMouseTracking(true);
-  // time =10;
-  // timerID = startTimer(1000);
-  // move_1 = new QLabel(this);
-  // move_pic.load("./dataset/circle1.jpg");
-  // move_pic = move_pic.scaled(move_1->size(),Qt::KeepAspectRatio);
-  // move_1->setPixmap(move_pic);
-  // img.load("./dataset/circle2.jpg");
-  // gamewidget->setFocusPolicy(Qt::StrongFocus);
 }
 // void MainWindow::mouseMoveEvent(QMouseEvent *event) {
 //   x = event->x();

@@ -9,5 +9,6 @@ class GameMenu : public QWidget {
   
  public:
   GameMenu(QStackedWidget *stackedWidget = nullptr, QWidget *parent = nullptr);
-
+ private:
+  QWidget *gameWidget;
 };

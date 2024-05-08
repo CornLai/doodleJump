@@ -17,15 +17,8 @@ ScoreBoard::ScoreBoard(QWidget *parent) : QWidget(parent) {
   // 創建水平佈局並添加 QLabel
   QHBoxLayout *infoLayout = new QHBoxLayout;
   infoLayout->addWidget(scoreLabel);
-  infoLayout->addSpacing(230);
+  infoLayout->addSpacing(200);
   infoLayout->addWidget(healthLabel);
-
-  // 創建垂直佈局並添加資訊欄的水平佈局
-  // QVBoxLayout *mainLayout = new QVBoxLayout(this);
-  // mainLayout->addLayout(infoLayout);  // 添加資訊欄
-  // mainLayout->addStretch();           // 添加伸縮空間（可選）
-
-  // 設置主佈局
   setLayout(infoLayout);
   // 使用 QTimer 模擬分數的變化
   // QTimer *timer = new QTimer(this);

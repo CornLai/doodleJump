@@ -15,3 +15,4 @@ private:
     
 };
 #endif
+//TODO增加不同種類的platform

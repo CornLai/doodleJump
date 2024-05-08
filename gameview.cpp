@@ -1,35 +1,33 @@
 #include "./headfile/gameview.h"
-GameView::GameView(QStackedWidget *stackedWidget, GameScene *scene,
+GameView::GameView(QStackedWidget *stackedWidget, QGraphicsScene *scene,
                    QWidget *parent)
     : QGraphicsView(scene, parent), scene(scene) {
   // 創建計分板
   scoreBoard = new ScoreBoard(this);
-  // 創建一個返回選單按鈕
-  pauseButton = new QPushButton(this);
-  // pauseButton->move(460, 5);
-  pauseButton->setFixedSize(50, 50);
-  // 設置 pauseButton 的樣式表
-  pauseButton->setStyleSheet(
-      "QPushButton {"
-      "    border-image: url(./dataset/images/pausebutton.png);"
-      "    width: 50px;"
-      "    height: 50px;"
-      "}");
-  // 連接按鈕的點擊信號到槽
-  connect(pauseButton, &QPushButton::clicked, [=] {
-    stackedWidget->setCurrentIndex(0);  // 切換到第二個頁面（遊戲畫面）
-    qDebug() << "返回選單";
-    delete this;
-    delete parent;
-  });
+  // // 創建一個返回選單按鈕
+  // pauseButton = new QPushButton(this);
+  // // pauseButton->move(460, 5);
+  // pauseButton->setFixedSize(50, 50);
+  // // 設置 pauseButton 的樣式表
+  // pauseButton->setStyleSheet(
+  //     "QPushButton {"
+  //     "    border-image: url(./dataset/images/pausebutton.png);"
+  //     "    width: 50px;"
+  //     "    height: 50px;"
+  //     "}");
+  // // 連接按鈕的點擊信號到槽
+  // connect(pauseButton, &QPushButton::clicked,parent,&GameWidget::togglePause);
   QHBoxLayout *infoLayout = new QHBoxLayout;
   infoLayout->addWidget(scoreBoard);
-  infoLayout->addWidget(pauseButton);
+  // infoLayout->addWidget(pauseButton);
   infoLayout->setAlignment(Qt::AlignTop);  // 将布局置于窗口的顶部
   setLayout(infoLayout);
   // 創建計時器
   timer = new QTimer(this);
-  connect(timer, &QTimer::timeout, [=]() { scoreBoard->culScore(score); });
+  connect(timer, &QTimer::timeout, [=]() {
+    scoreBoard->culScore(score);
+});
+
   timer->start(20);
 }
 void GameView::setScore(long long score) { this->score = score; }

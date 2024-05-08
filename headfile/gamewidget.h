@@ -26,7 +26,7 @@ class GameWidget : public QWidget {
   void handleGameOver();
  private:
   QStackedWidget *stackedWidget;
-  GameScene *scene;
+  QGraphicsScene *scene;
   GameView *view;
   // QHBoxLayout *layout;
   Player *player;
@@ -34,9 +34,12 @@ class GameWidget : public QWidget {
   QPushButton *pauseButton;
   long long score = 0;
   int lastY = 900;         // 上一個平台的 Y 座標
+  bool pause = 0;
  private slots:
    void updateGame();
    void spawnPlatform();
+  public slots:
+    void togglePause();
   
 
 };
