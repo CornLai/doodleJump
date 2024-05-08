@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "qstackedwidget": "cpp",
+    "qhboxlayout": "cpp",
+    "new": "cpp",
+    "qscrollbar": "cpp"
+  }
+}
