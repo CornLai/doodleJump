@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QTimer>
+#include <QWidget>
 
 #include "gamescene.h"
 #include "scoreboard.h"
@@ -14,7 +15,7 @@ class GameView : public QGraphicsView {
   signals:
     void gameOver();
  public:
-  GameView(QStackedWidget *stackedWidget, GameScene *scene,
+  GameView(QStackedWidget *stackedWidget, QGraphicsScene *scene,
            QWidget *parent = nullptr);
   // void paintEvent(QPaintEvent *event) ;
   void setScore(long long);
@@ -23,10 +24,10 @@ class GameView : public QGraphicsView {
 
  private:
   ScoreBoard *scoreBoard;
-  QPushButton *pauseButton;//TODO暫停按鈕功能未完成
+  QPushButton *pauseButton;
   QTimer *timer;
   long long score = 0;
-  GameScene *scene;
+  QGraphicsScene *scene;
   QPointF playerPos;
 };
 #endif

@@ -419,7 +419,14 @@ moc_gamemenu.cpp: headfile/gamemenu.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt5/mkspecs/cygwin-g++ -I/home/Benson/project_final -I/home/Benson/project_final -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtMultimedia -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++ -I/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin -I/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward -I/usr/lib/gcc/x86_64-pc-cygwin/11/include -I/usr/include -I/usr/include/w32api headfile/gamemenu.h -o moc_gamemenu.cpp
 
-moc_gameoverwidget.cpp: headfile/gameoverwidget.h \
+moc_gameoverwidget.cpp: headfile/gamewidget.h \
+		headfile/platform.h \
+		headfile/player.h \
+		headfile/scoreboard.h \
+		headfile/gamescene.h \
+		headfile/gameview.h \
+		headfile/gameoverwidget.h \
+		headfile/gameoverwidget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt5/mkspecs/cygwin-g++ -I/home/Benson/project_final -I/home/Benson/project_final -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtMultimedia -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtNetwork -I/usr/include/qt5/QtCore -I/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++ -I/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin -I/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward -I/usr/lib/gcc/x86_64-pc-cygwin/11/include -I/usr/include -I/usr/include/w32api headfile/gameoverwidget.h -o moc_gameoverwidget.cpp
@@ -428,6 +435,9 @@ moc_gameview.cpp: headfile/gamescene.h \
 		headfile/player.h \
 		headfile/platform.h \
 		headfile/scoreboard.h \
+		headfile/gamewidget.h \
+		headfile/gameview.h \
+		headfile/gameoverwidget.h \
 		headfile/gameview.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -438,6 +448,7 @@ moc_gamewidget.cpp: headfile/platform.h \
 		headfile/scoreboard.h \
 		headfile/gamescene.h \
 		headfile/gameview.h \
+		headfile/gamewidget.h \
 		headfile/gameoverwidget.h \
 		headfile/gamewidget.h \
 		moc_predefs.h \
@@ -489,7 +500,13 @@ gamemenu.o: gamemenu.cpp headfile/gamemenu.h \
 		headfile/gameoverwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamemenu.o gamemenu.cpp
 
-gameoverwidget.o: gameoverwidget.cpp headfile/gameoverwidget.h
+gameoverwidget.o: gameoverwidget.cpp headfile/gameoverwidget.h \
+		headfile/gamewidget.h \
+		headfile/platform.h \
+		headfile/player.h \
+		headfile/scoreboard.h \
+		headfile/gamescene.h \
+		headfile/gameview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameoverwidget.o gameoverwidget.cpp
 
 gamescene.o: gamescene.cpp headfile/gamescene.h \
@@ -501,7 +518,9 @@ gameview.o: gameview.cpp headfile/gameview.h \
 		headfile/gamescene.h \
 		headfile/player.h \
 		headfile/platform.h \
-		headfile/scoreboard.h
+		headfile/scoreboard.h \
+		headfile/gamewidget.h \
+		headfile/gameoverwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameview.o gameview.cpp
 
 gamewidget.o: gamewidget.cpp headfile/gamewidget.h \

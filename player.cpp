@@ -18,8 +18,25 @@ void Player::jump() {
   // 播放音频文件
     QSound::play("./dataset/sounds/jump.wav");
 }
-
+void Player::turnLeft() {
+  leftDistance = 0;
+  Lvelocity = -5;
+  setPixmap(QPixmap("./dataset/images/doodleL.png"));
+}
+void Player::turnRight() {
+  rightDistance = 0;
+  Rvelocity = 5;
+  setPixmap(QPixmap("./dataset/images/doodleR.png"));
+}
 void Player::update() {
+  if(leftDistance < maxLRDistance){
+    leftDistance += (-Lvelocity);
+    setPos(x() + Lvelocity, y() );
+  }
+  if(rightDistance < maxLRDistance){
+    rightDistance += (Rvelocity);
+    setPos(x() + Rvelocity, y() );
+  }
   if (jumpDistance < maxJumpDistance) {  // 上升
     jumpDistance += (-velocity);
     setPos(x(), y() + velocity);
@@ -59,4 +76,4 @@ void Player::checkCollision() {
 // bool Player::checkDroping() { return collisionFlag; }
 // QRect Player::returncollisionRect() { return collisionRect; }
 long long Player::returnScore() { return score; }
-bool Player::returnTurnFlag() { return turnflag; }
+

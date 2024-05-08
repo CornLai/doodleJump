@@ -22,19 +22,16 @@ class Player : public QObject, public QGraphicsPixmapItem {
   // bool checkDroping();
   // QRect returncollisionRect();
    long long returnScore();
-   bool returnTurnFlag();
+
+   void turnLeft();
+   void turnRight();
   void keyPressEvent(QKeyEvent *event) {
-    int step = 40;  // 移动步长
     if (event->key() == Qt::Key_Left) {
-      // 按下左箭头键，向左移动
-      // this->setPixmap(QPixmap("./dataset/images/doodleL.png"));
-      turnflag = 0;
-      setPos(x() - step, y());
+      turnLeft();
+      turnflag=0;
     } else if (event->key() == Qt::Key_Right) {
-      // 按下右箭头键，向右移动
-      // this->setPixmap(QPixmap("./dataset/images/doodleR.png"));
-      turnflag = 1;
-      setPos(x() + step, y());
+      turnRight();
+      turnflag=1;
     }
   }
  public slots:
@@ -42,12 +39,17 @@ class Player : public QObject, public QGraphicsPixmapItem {
 
  private:
   qreal velocity;
+  qreal Lvelocity;
+  qreal Rvelocity;
   qreal gravity;
   qreal jumpDistance;
+  qreal leftDistance;
+  qreal rightDistance;
   const qreal maxJumpDistance = 320;
+  const qreal maxLRDistance = 50;
   QRect collisionRect;
   bool collisionFlag = false;
   long long score = 0;
-  bool turnflag = 0;
+  bool turnflag=0;
 };
 #endif
